@@ -1,8 +1,16 @@
 let lista = [12,5,80,34,7];
+let listNueva=lista.map(
+    function(valor){
+        return valor * 2 //se multiplica por 2
+    }
+);
+console.log(listNueva);
+
+
 lista.sort(//el sort esta aceptando la función como parametro
     function(valor1,valor2){
-        return valor1 > valor2; //guarda la función para poder utilizarlo
-    }
+        return valor2 - valor1; //return guarda la función para poder utilizarlo
+    }                           //"-"ordena y compara
 );
 console.log(lista);
 
