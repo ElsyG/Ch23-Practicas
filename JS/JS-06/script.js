@@ -91,5 +91,81 @@ resultadoQueCambia.innerHTML = "Saludos, cambie el texto juas juas";
    var botonMultiplicacion = document.getElementById("botonMultiplicacion")
    var botonDivision = document.getElementById("botonDivision")
 
-   var resultado = document.getElementById("resultado")
+   var resultado = document.getElementById("resultado");
+
+   //Construimos las funciones de nuestra calculadora
+
+   function suma(){
+    let valor1 = parseInt(input1.value); //number 1
+    let valor2 = parseInt(input2.value); //number 2
+    let suma = valor1 + valor2; // calculo suma
+    resultado.innerHTML = suma; // incrusto el resultado en su lugar
+   }
+
+
+   function resta(){
+    let valor1 = parseInt(input1.value); //number 1
+    let valor2 = parseInt(input2.value); //number 2
+    let resta = valor1 - valor2; // calculo resta
+    resultado.innerHTML = resta; // incrusto el resultado en su lugar
+   }
+
+   function multiplicacion(){
+    let valor1 = parseInt(input1.value); //number 1
+    let valor2 = parseInt(input2.value); //number 2
+    let multiplicacion = valor1 * valor2; // calculo multi
+    resultado.innerHTML = multiplicacion; // incrusto el resultado en su lugar
+   }
+
+   function division(){
+    let valor1 = parseInt(input1.value); //number 1
+    let valor2 = parseInt(input2.value); //number 2
+    let division = valor1 / valor2; // calculo divi
+    resultado.innerHTML = division; // incrusto el resultado en su lugar
+   }
+
+
+   /* ¿Cómo se crea un evento?
+        -node.addEventLitener ("evento a escuchar", lo que quiero que haga cuando se escuche)
+            -node (nodo donde aterrizo el evento)
+            -addEventLitener (palabra revervada para usar el evento)
+            - evento a escuchar
+
+   */
+
+botonSuma.addEventListener("click",suma);
+botonResta.addEventListener("click",resta);
+botonMultiplicacion.addEventListener("click",multiplicacion);
+botonDivision.addEventListener("click",division);
+
+/*
+Manipulación del DOM
+
+° metodos para acceder a los elementos:
+    -document.getElementById
+    -document.getElementByTagName
+    - className
+
+° Métodos para crear elementos
+    - document.createElement (eiqueta)
+    - document.createTextNode (texto) - INVESTIGAR
+
+°Métodos para insertar elementos
+    - parentElement.append
+    - parentElement.insertBefore
+    - parentElement.insertAdjacentElement
+
+° Métodos para modificar elementos
+    - node.outerHTML (leer o referencias el elemento)
+    - node.innerHTML (modificar el elemento)
+    -
+*/
+
+//Primer paso: Definir con que voy a interectuar (almacena en una variable)
+const textoAModificar = document.querySelector("#h1")
+
+//Creo una funcion que cambia de color, segun el color que le paso como parametro
+function cambiarColor(color){
+    textoAModificar.style.color = color;
+}
 
