@@ -1,12 +1,78 @@
 package colecciones.engc;
 
+import java.util.*;
+ // que es una interfaz
 public class MyCollection {
 
 	public static void main(String[] args) {
-	
-		wrapperClass();//algo que esta envolvieno algo y lo mejora
-
+		MyCollection c =new MyCollection();
+		//imprimir(c.listaCollections());
+		//imprimir(c.setCollections());
+		//wrapperClass();//algo que esta envolvieno algo y lo mejora
+		mapCollections();
 	}
+	
+	private static void mapCollections() {
+		Map miMap = new HashMap(); //es un conjunto que esta formado de 2 conjuntos
+		miMap.put("Juan", "valor1");
+		miMap.put("María", "valor2");
+		miMap.put("Karla", "valor3");
+		miMap.put("Tomas", "valor3");
+		
+		imprimir(miMap.keySet());
+		imprimir(miMap.values());
+	}
+	
+	
+	Set setCollections() {
+		Set miSet = new HashSet();
+		miSet.add("uno");
+		miSet.add("dos");
+		miSet.add("tres");
+		miSet.add("cuatro");
+		miSet.add("cinco");
+			
+		//miSet.clear();
+		
+		Object a [] = miSet.toArray();
+		int i = 0;
+		System.out.println("Mi arreglo " + a [i]);
+		
+		System.out.println("Tamaño de la lista " + miSet.size());
+		
+		return miSet;	
+		 
+		
+	}
+	
+		
+	private List listaCollections() {
+		List miLista = new ArrayList();
+		System.out.println(miLista + "Tamaño de la lista antes " + miLista.size());
+		System.out.println("esta vacía " + miLista.isEmpty());
+		miLista.add("1");
+		miLista.add(0,2);
+		miLista.add(3);
+		miLista.add(0, "Pato");
+		
+		miLista.set(0, miLista);
+		miLista.remove(2);
+		
+		System.out.println(miLista + "Tamaño de la lista después " + miLista.size());
+		System.out.println("esta vacía " + miLista.isEmpty());
+		
+		boolean e = miLista.contains(3);
+		System.out.println("--> " + e);
+		
+		return miLista;
+	}
+	
+	private static void imprimir(Collection collection) {
+		for (Object elementos : collection) {
+			System.out.println("elementos " + elementos);
+	}
+	}
+	
 	static void wrapperClass(){
 		//byte, short, char, long, float, int, double
 		byte numeroB =-128;
