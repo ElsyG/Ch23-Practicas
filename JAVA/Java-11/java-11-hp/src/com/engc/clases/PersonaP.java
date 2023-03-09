@@ -6,9 +6,9 @@ public class PersonaP {
 	
 	public PersonaP(String nombre, int edad) {
 	    this.nombre = nombre;
-	    this.edad = edad;
-	    
+	    this.edad = edad;	    
 	}
+	
 	public String getNombre() {
 	    return nombre;
 	}
