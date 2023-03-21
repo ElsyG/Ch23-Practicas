@@ -39,6 +39,7 @@ if (num1 >= num2 && num1 >= num3) {
 }
 }
 
+
 var lista=[num1,num2,num3];
 console.log(lista);
 

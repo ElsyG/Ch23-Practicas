@@ -17,7 +17,8 @@ function celsiusToFahrenheit(celsius) {
   function celsiusToKelvin(celsius) {
     return celsius + 273.15;
   }
-   
+ 
+  
     var fahrenheit = celsiusToFahrenheit(parseFloat(celsius));
     var kelvin = celsiusToKelvin(parseFloat(celsius));
   
@@ -25,9 +26,8 @@ function celsiusToFahrenheit(celsius) {
     console.log("Grados Kelvin: " + kelvin);
   
     // Imprimir en el DOM
-    var kelvin = document.getElementById("Grados Kelvin: " + kelvin);
-    //document.getElementById('kelvin').innerHTML = "Grados Kelvin: " + kelvin;
-    //document.getElementById('fahrenheit').innerHTML = "Grados Fahrenheit: " + fahrenheit;
+    document.getElementById('kelvin').innerHTML = "Grados Kelvin: " + kelvin;
+    document.getElementById('fahrenheit').innerHTML = "Grados Fahrenheit: " + fahrenheit;
   }
   
   // Llamar a la función al cargar la página
