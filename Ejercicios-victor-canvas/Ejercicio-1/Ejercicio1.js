@@ -2,9 +2,9 @@ var num1=parseInt(prompt("Dame un primer número: "));
 var num2=parseInt(prompt("Dame un segundo número: "));
 var num3=parseInt(prompt("Dame un tercer número: "));
 
-let mayor;
-let centro;
-let menor;
+let = mayor;
+let = centro;
+let = menor;
 
 if (num1 >= num2 && num1 >= num3) {
     mayor = num1;
@@ -39,7 +39,6 @@ if (num1 >= num2 && num1 >= num3) {
 }
 }
 
-
 var lista=[num1,num2,num3];
 console.log(lista);
 
@@ -48,12 +47,14 @@ console.log("Ordenados de mayor a menor: " + mayor + " " + centro + " " + menor)
 console.log("Ordenados de mayor a menor: " + menor + " " + centro + " " + mayor);
 
 // Verificamos si los números son iguales
-if (menor == centro ) {
-    console.log (menor + " y " + centro + " son iguales");
+if (num1 == num2 ) {
+    console.log (num1 + "y" + num2 + " son iguales");
 
-    if (centro == mayor) {
-        console.log (centro + " y " + mayor + " son iguales");
-    }if (menor != centro && centro != mayor && menor !=mayor) {
-    console.log (menor + ", " + centro + " y " + mayor + " son diferentes");
+    if (num1 == num3) {
+        console.log (num1 + "y" + num3 + " son iguales");
+} else if (num2 == num3){
+    console.log (num2 + "y" + num3 + " son iguales");
+}else{
+    console.log (num1 + ", " + num2 + " y" + num3 + " son iguales");
 }
- }
+}
