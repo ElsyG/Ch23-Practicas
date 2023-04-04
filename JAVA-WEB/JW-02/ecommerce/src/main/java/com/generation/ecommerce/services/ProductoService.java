@@ -9,61 +9,69 @@ import org.springframework.stereotype.Service;
 import com.generation.ecommerce.model.Producto;
 import com.generation.ecommerce.repositories.ProductoRepository;
 
+//Decimos que es un Servicio
 @Service
-
 public class ProductoService {
-	//creo el objeto del ProductoRepository -- Instancio
+
+	// Create el objeto de la clase ProductoRepository
 	private final ProductoRepository productoRepository;
-	
-	//cableo con Autowired --Cableo
+
+	// Cablear con el Autowired
 	@Autowired
-	
-	//Utilizo ese objeto como parametro de mi construsctor --Inyecto
-	public ProductoService (ProductoRepository productoRepository) {
+
+	// Uso ese objeto como parametro de mi constructor
+	public ProductoService(ProductoRepository productoRepository) {
 		this.productoRepository = productoRepository;
-	}	
-	
-	
-//Create (Metodo para agregar un objeto del tipo Producto y guardarlo en la base de datos. Si el producto existe, no deberia actualizar la Base de datos porque seria un objeto duplicado.
-    
-    public void crearProducto(Producto prod) { //objeto del tipo producto
-        Optional<Producto> productoBuscado = 
-                productoRepository.findByNombre(prod.getNombre());
-        if (productoBuscado.isPresent()) {
-            throw new IllegalStateException("El producto con el nombre "
-                    + "[" + prod.getNombre() + "] ya existe.");
-        } else {
-            productoRepository.save(prod);
-        }//else //if 
-    }//addProducto	
-	
-	
-	//Read (leer una lista de producto)
-	public List<Producto> leerProducto() {
-		return productoRepository.findAll();
 	}
-		
-	public Producto leerProducto(Long prodId) {
-		return productoRepository.findById(prodId).orElseThrow(()-> new IllegalStateException("El Producto " + "con el id " + prodId + " no existe.") );
-	    }//getProducto
 
-
-	
-	
-	
-	//Update
-	public void actualizarProducto(String nombre, String descripcion, String URL_Imagen, double precio){
-		//si el producto existe
-		if(productoRepository.existsById(proId)) {//entonces lo modifico
-			Producto productoABuscar = productoRepository.getById(proId);
-			if (nombre !=null)productoABuscar.setNombre(nombre);
-			if (nombre !=null)productoABuscar.setDescripcion(descripcion);
+	// Create (Metodo para agregar un objeto del tipo Producto y guardarlo en la
+	// base de datos)
+	// Si el producto existe
+	public void crearProducto(Producto producto) {
+		Optional<Producto> productoByName = // variable temporal
+				productoRepository.findByNombre(producto.getNombre());
+		if (productoByName.isPresent()) {
+			throw new IllegalStateException("El producto: " + "[" + producto.getNombre() + "] ya existe");
+		} else {
+			productoRepository.save(producto);
 		}
 	}
-	
-	//Delete
-	//	public void eliminarProducto(){
-	
-//
 
+	// Read (leer una lista de productos)
+	public List<Producto> leerProductos() {
+		return productoRepository.findAll();
+		// toda la lista de productos
+	}
+
+	// Read (leer un producto con un id especifico)
+	public Producto leerProducto(Long prodId) {
+		return productoRepository.findById(prodId)
+				.orElseThrow(() -> new IllegalStateException("El producto" + " con el Id " + prodId + " no existe"));
+	}
+
+	//Update para actualizar un producto
+  public void actualizarProducto(Long prodId, String nombre, String descripcion, String uRLImagen, double precio) {
+      
+      //si el producto existe...
+      if(productoRepository.existsById(prodId)) {
+          //entonces lo modifico
+    	  Producto productoABuscar = productoRepository.getById(prodId) ;//ya que verifico que mi producto existe, lo traigo y lo asigno a una variable llamada productoABuscar
+          if (nombre!= null) productoABuscar.setNombre(nombre);
+          if (descripcion != null) productoABuscar.setDescripcion(descripcion);
+          if (precio != 0) productoABuscar.setPrecio(precio);
+          if (uRLImagen != null) productoABuscar.setURL_Imagen(uRLImagen);
+          //cuando termino de editar el objeto...
+          productoRepository.save(productoABuscar);
+      }else {
+          System.out.println("El producto con el id " + prodId + " no existe");
+      }        
+  }
+
+	// Delete
+	public void borrarProducto(Long proId) {
+		if(productoRepository.existsById(proId)) {
+			productoRepository.deleteById(proId);
+		}
+
+	}
 }

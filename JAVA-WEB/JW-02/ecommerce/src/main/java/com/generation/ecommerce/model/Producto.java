@@ -7,12 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-
-@Table
-
-
-
+//Mi clase Producto se convierte en una entidad JPA (persistencia de datos)
+	@Entity
+	
+	//Especificar de forma correcta el nombre de la tabla
+	@Table(name="Producto")
 
 public class Producto {
 	
